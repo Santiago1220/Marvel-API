@@ -1,1 +1,20 @@
-<p>all-characters works!</p>
+<div class="content" *ngIf="!showSearchResult">
+    <div class="title-section">
+        <h1>Marvel Characters</h1>
+        <select name="" id="">
+            <option value="1">Name</option>
+        </select>
+    </div>
+    <div class="fila">
+        <div class="column-2" *ngFor="let characters of allCharacters">
+            <div class="card-character">
+                <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-character" alt="Some Issue Loading Image..." />
+                <div class="card-cont">
+                    <h4>{{characters.name}}</h4>
+                    <!-- <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="">Comics</button>
+                    <button type="button" (click)="fetchSeriesByCharacter(characters.id)" class="">Series</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

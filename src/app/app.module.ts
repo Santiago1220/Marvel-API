@@ -10,6 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AllCharactersComponent } from './all-characters/all-characters.component';
 import { ComicsComponent } from './comics/comics.component';
 import { SeriesComponent } from './series/series.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,13 +21,14 @@ import { SeriesComponent } from './series/series.component';
     HomeComponent,
     AllCharactersComponent,
     ComicsComponent,
-    SeriesComponent
+    SeriesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductoModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
   providers: [CookieService],
     bootstrap: [AppComponent],

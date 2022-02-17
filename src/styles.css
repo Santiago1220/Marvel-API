@@ -1,7 +1,37 @@
+body{
+    background: #F4F4F4;
+    font-family: 'Montserrat', sans-serif;
+}
+
 body, figure{
     margin: 0;
 }
 
 input{
     border: none;
+}
+
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.fila{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    flex-wrap: wrap;
+}
+
+.padding-sections{
+    padding: 10px 25px;
+}
+
+.list-characters{
+    width: 70%;
+}
+
+.aside-favorite-comics{
+    background: #EBEBEB;
+    width: 30%;
 }
