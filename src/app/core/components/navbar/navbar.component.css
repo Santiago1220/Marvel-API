@@ -1,0 +1,28 @@
+header{
+    display: flex;
+    align-items: center;
+    background: #2D2727;
+    padding: 15px 10px;
+}
+
+.logo-header img{
+    width: 150px;
+}
+
+.search-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box input{
+    width: 600px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+
+.search-box span img{
+    right: 45px;
+    position: relative;
+}
