@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchService } from 'src/app/serviceModal/switch.service';
 import { MarvelAPIService } from '../../Service/marvel-api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { MarvelAPIService } from '../../Service/marvel-api.service';
 export class HomeComponent implements OnInit {
 
 
-  constructor(private service:MarvelAPIService) { }
+  constructor(private service:MarvelAPIService, private modalSS:SwitchService) { }
 
   allCharacters:any=[];
   comics:any=[];
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
   characterName:string;
   showSearchResult:boolean;
   searchedCharacter:any=[];
+  modalSwitch:boolean;
 
   ngOnInit(): void {
     this.showComicsDiv = false;
@@ -28,6 +30,15 @@ export class HomeComponent implements OnInit {
       console.log(result);
       this.allCharacters = result.data.results;
     });
+
+    this.modalSS.$modal.subscribe((valor)=>{this.modalSwitch=valor});
+  }
+
+  openModal(){
+    this.modalSwitch=true;
+  }
+  closeModal(){
+    this.modalSS.$modal.emit(false);
   }
 
   fetchComicsByCharacter(characterId:string)

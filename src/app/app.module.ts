@@ -11,6 +11,7 @@ import { AllCharactersComponent } from './all-characters/all-characters.componen
 import { ComicsComponent } from './comics/comics.component';
 import { SeriesComponent } from './series/series.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AllCharactersComponent,
     ComicsComponent,
     SeriesComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

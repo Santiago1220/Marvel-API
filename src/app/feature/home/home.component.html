@@ -14,18 +14,8 @@
                         <h3>{{characters.name}}</h3>
                         <p>{{characters.description}}</p>
                         <button>View more</button>
-                        <button type="button" (click)="fetchComicsByCharacter(characters.id)" class="">Comics</button>
+                        <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="">Comics</button>
                         <!-- <button type="button" (click)="fetchSeriesByCharacter(characters.id)" class="">Series</button> -->
-                    </div>
-                    <div class="card-footer">
-                        <h5>Related comics</h5>
-                        <div class="comics" *ngIf='showComicsDiv'>
-                            <ul>
-                                <li *ngFor="let c of comics">
-                                    {{ c.title }}
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -35,4 +25,24 @@
         <h2>My favorites comics</h2>
     </aside>
 </div>
+<!-- <div class="" *ngIf="modalSwitch == true">
+    <app-modal></app-modal>
+</div> -->
 
+<div class="overlay" *ngIf="modalSwitch == true">
+    <div class="modal">
+        <div class="modal-body">
+            <h3>Contenido</h3>
+            <button (click)="closeModal()">X</button>
+            <h5>Related comics</h5>
+            <div class="comics" *ngIf='showComicsDiv'>
+                <ul>
+                    <li *ngFor="let c of comics">
+                        <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
+                        {{ c.title }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
