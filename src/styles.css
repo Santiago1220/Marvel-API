@@ -31,12 +31,12 @@ input{
 }
 
 .list-characters{
-    width: 70%;
+    flex: 3;
 }
 
 .aside-favorite-comics{
     background: #EBEBEB;
-    width: 30%;
+    flex: 1;
 }
 
 .btn-base{

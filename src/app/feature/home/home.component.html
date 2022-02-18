@@ -22,9 +22,9 @@
                     <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-character" alt="Some Issue Loading Image..." />
                     <div class="card-cont">
                         <h3>{{characters.name}}</h3>
-                        <p *ngIf='showDescrip'>{{characters.description}}</p>
-                        <p *ngIf='!showDescrip'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
-                        <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
+                        <p class="description">{{characters.description}}</p>
+                        <p class="description" *ngIf="characters.description == null || characters.description == ''">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut fugit deleniti nobis quos facilis quas corporis! Sint, magni? Perferendis  nobis quos facilis </p>
+                        <button type="button" (click)="openModal()"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                     <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-character" alt="Some Issue Loading Image..." />
                     <div class="card-cont">
                         <h3>{{characters.name}}</h3>
-                        <p *ngIf='showDescrip'>{{characters.description}}</p>
-                        <p *ngIf='!showDescrip'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
+                        <p>{{characters.description}}</p>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
                         <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
                     </div>
                 </div>
@@ -65,8 +65,8 @@
             <div class="comics" *ngIf='showComicsDiv'>
                 <ul>
                     <li *ngFor="let c of comics">
-                        <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
-                        <h6>{{ c.title }}</h6>
+                        <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="" alt="Some Issue Loading Image..." />
+                        <h5>{{ c.title }}</h5>
                     </li>
                 </ul>
             </div>
