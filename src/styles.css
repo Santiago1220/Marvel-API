@@ -1,5 +1,8 @@
 body{
     background: #F4F4F4;
+}
+
+body, button, a, label{
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,7 +22,7 @@ input{
 .fila{
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 10px;
+    grid-gap: 40px;
     flex-wrap: wrap;
 }
 
@@ -34,4 +37,24 @@ input{
 .aside-favorite-comics{
     background: #EBEBEB;
     width: 30%;
+}
+
+.btn-base{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 600;
+}
+
+button.button-primary{
+    padding: 15px 10px;
+    text-transform: uppercase;
+    color: white;
+    background: #EC1E23;
+    transition: all ease-in-out 0.5s;
+}
+
+button.button-primary:hover{
+    box-shadow: 3px 10px 14px -6px rgba(0,0,0,0.25);
+    background: #b31518;
 }

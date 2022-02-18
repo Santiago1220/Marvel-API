@@ -1,8 +1,18 @@
-<div class="content" *ngIf="!showSearchResult">
-    <div class="list-characters padding-sections">
+<header>
+    <figure class="logo-header">
+      <img src="assets/img/Marvel_Logo.png" alt="Logo Marvel">
+    </figure>
+    <div class="search-box">
+      <input type="text" placeholder="Search character..." name='characterName' id='characterName'
+    (keyup)="findCharacter($event)">
+      <span><img src="assets/img/search.png" alt="Icono buscar"></span>
+    </div>
+  </header>
+<div class="content">
+    <div class="list-characters padding-sections" *ngIf="!showSearchResult">
         <div class="title-section">
-            <h1>Marvel Characters</h1>
-            <select name="" id="">
+            <h1><img src="assets/img/characters.png" alt="Icono characters">Characters</h1>
+            <select name="" id="" class="input-sort">
                 <option value="1">Sort by</option>
             </select>
         </div>
@@ -12,10 +22,30 @@
                     <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-character" alt="Some Issue Loading Image..." />
                     <div class="card-cont">
                         <h3>{{characters.name}}</h3>
-                        <p>{{characters.description}}</p>
-                        <button>View more</button>
-                        <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="">Comics</button>
-                        <!-- <button type="button" (click)="fetchSeriesByCharacter(characters.id)" class="">Series</button> -->
+                        <p *ngIf='showDescrip'>{{characters.description}}</p>
+                        <p *ngIf='!showDescrip'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
+                        <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-characters padding-sections" *ngIf="showSearchResult">
+        <div class="title-section">
+            <h1><img src="assets/img/characters.png" alt="Icono characters">Characters</h1>
+            <select name="" id="" class="input-sort">
+                <option value="1">Sort by</option>
+            </select>
+        </div>
+        <div class="fila">
+            <div class="column-2" *ngFor="let characters of searchedCharacter">
+                <div class="card-character">
+                    <img src="{{characters.thumbnail.path +'/standard_medium.'+characters.thumbnail.extension}}" width="100%" class="card-img-character" alt="Some Issue Loading Image..." />
+                    <div class="card-cont">
+                        <h3>{{characters.name}}</h3>
+                        <p *ngIf='showDescrip'>{{characters.description}}</p>
+                        <p *ngIf='!showDescrip'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
+                        <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
                     </div>
                 </div>
             </div>
@@ -25,21 +55,18 @@
         <h2>My favorites comics</h2>
     </aside>
 </div>
-<!-- <div class="" *ngIf="modalSwitch == true">
-    <app-modal></app-modal>
-</div> -->
-
 <div class="overlay" *ngIf="modalSwitch == true">
     <div class="modal">
         <div class="modal-body">
-            <h3>Contenido</h3>
-            <button (click)="closeModal()">X</button>
-            <h5>Related comics</h5>
+            <div class="title-modal">
+                <h3>Related comics</h3>
+                <button (click)="closeModal()" class="btn-base button-close"><img src="assets/img/btn-close.png" alt="Icono cerrar"></button>
+            </div>
             <div class="comics" *ngIf='showComicsDiv'>
                 <ul>
                     <li *ngFor="let c of comics">
                         <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="card-img-top" alt="Some Issue Loading Image..." />
-                        {{ c.title }}
+                        <h6>{{ c.title }}</h6>
                     </li>
                 </ul>
             </div>

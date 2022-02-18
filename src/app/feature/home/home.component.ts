@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   series:any=[];
   showComicsDiv:boolean;
   showSeriesDiv:boolean;
+  showDescrip:boolean;
   characterName:string;
   showSearchResult:boolean;
   searchedCharacter:any=[];
@@ -29,6 +30,9 @@ export class HomeComponent implements OnInit {
     this.service.allCharacters().subscribe((result)=>{
       console.log(result);
       this.allCharacters = result.data.results;
+      if(result.data.results.description >= 0){
+        this.showDescrip = true;
+      }
     });
 
     this.modalSS.$modal.subscribe((valor)=>{this.modalSwitch=valor});
@@ -53,6 +57,24 @@ export class HomeComponent implements OnInit {
         this.showComicsDiv = true;
       }
     })
+  }
+
+  findCharacter(event:any)
+  {
+     this.characterName = event.target.value;
+     console.log(this.characterName);
+     this.service.getCharacterByName(this.characterName).subscribe((result)=>{
+       console.log(result);
+       if(result.data.count>0)
+       {
+         this.showSearchResult = true;
+         this.searchedCharacter = result.data.results;
+       }
+       else{
+  
+         this.ngOnInit();
+       }
+     })
   }
 
 }
