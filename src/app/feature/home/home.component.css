@@ -185,3 +185,30 @@ header{
 .footer-card{
     display: flex;
 }
+
+aside .list-of-comics{
+    text-align: center;
+}
+
+aside .list-of-comics ul{
+    padding-left: 0;
+    list-style: none;
+}
+
+aside .list-of-comics ul li{
+    position: relative;
+}
+
+aside .list-of-comics ul li button{
+    position: absolute;
+    right: 25px;
+    top: -15px;
+}
+
+aside .list-of-comics button img{
+    width: 30px;
+}
+
+aside .list-of-comics img{
+    width: 200px;
+}

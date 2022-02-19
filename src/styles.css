@@ -86,3 +86,44 @@ button.button-buy{
 .button-add img, .button-buy img{
     margin: 0 10px 0 0;
 }
+
+.fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.5s;
+}
+
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header, .content {
+      flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+    .fila{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .overlay .modal{
+        max-width: 400px !important;
+    }
+
+    .comics ul{
+        flex-wrap: wrap;
+    }
+}
+

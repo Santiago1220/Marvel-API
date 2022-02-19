@@ -8,7 +8,7 @@
       <span><img src="assets/img/search.png" alt="Icono buscar"></span>
     </div>
   </header>
-<div class="content">
+<div class="content fade-in">
     <div class="list-characters padding-sections" *ngIf="!showSearchResult">
         <div class="title-section">
             <h1><img src="assets/img/characters.png" alt="Icono characters">Characters</h1>
@@ -53,10 +53,19 @@
     </div>
     <aside class="aside-favorite-comics padding-sections">
         <h2 class="title-favorites"><img src="assets/img/favourites.png" alt="Icono characters">My favorites</h2>
+        <div class="list-of-comics">
+            <ul>
+                <li>
+                    <button class="btn-base"><img src="assets/img/btn-delete.png" alt="Icono borrar"></button>
+                    <img src="assets/img/comic-prueba_.jpg" alt="Comic de prueba">
+                    <h4>Nombre del comic</h4>
+                </li>
+            </ul>
+        </div>
     </aside>
 </div>
 <div class="overlay" *ngIf="modalSwitch == true">
-    <div class="modal" *ngIf='!showDetailComicDiv'>
+    <div class="modal fade-in" *ngIf='!showDetailComicDiv'>
         <div class="modal-body">
             <div class="title-modal">
                 <h3>Related comics</h3>
@@ -74,7 +83,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" *ngIf='showDetailComicDiv'>
+    <div class="modal fade-in" *ngIf='showDetailComicDiv'>
         <div class="modal-body">
             <div class="title-modal-single-comic">
                 <button (click)="closeModal()" class="btn-base button-close"><img src="assets/img/btn-close.png" alt="Icono cerrar"></button>
@@ -86,6 +95,7 @@
                         <div class="content-comic">
                             <h5>{{ c.title }}</h5>
                             <p>{{c.description}}</p>
+                            <p *ngIf="c.description == null || c.description == ''">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
                         </div>
                     </li>
                 </ul>
