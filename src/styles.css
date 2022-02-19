@@ -10,6 +10,11 @@ body, figure{
     margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6{
+    color: #3C3231;
+    font-weight: 700;
+}
+
 input{
     border: none;
 }
@@ -57,4 +62,27 @@ button.button-primary{
 button.button-primary:hover{
     box-shadow: 3px 10px 14px -6px rgba(0,0,0,0.25);
     background: #b31518;
+}
+
+button.button-add{
+    background: #F0F0F0;
+}
+
+button.button-buy{
+    background: #DCDCDC;
+    color: #EC1D23;
+}
+
+.button-add, .button-buy{
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 20px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-add img, .button-buy img{
+    margin: 0 10px 0 0;
 }

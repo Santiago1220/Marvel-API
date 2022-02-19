@@ -44,7 +44,7 @@
                     <div class="card-cont">
                         <h3>{{characters.name}}</h3>
                         <p>{{characters.description}}</p>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
+                        <p *ngIf="characters.description == null || characters.description == ''">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error adipisci doloribus nihil explicabo quasi ad voluptate provident porro magni totam! Corrupti incidunt aut nam pariatur labore saepe fugiat assumenda.</p>
                         <button type="button" (click)="openModal();"(click)="fetchComicsByCharacter(characters.id)" class="btn-base button-primary">See comics</button>
                     </div>
                 </div>
@@ -52,24 +52,48 @@
         </div>
     </div>
     <aside class="aside-favorite-comics padding-sections">
-        <h2>My favorites comics</h2>
+        <h2 class="title-favorites"><img src="assets/img/favourites.png" alt="Icono characters">My favorites</h2>
     </aside>
 </div>
 <div class="overlay" *ngIf="modalSwitch == true">
-    <div class="modal">
+    <div class="modal" *ngIf='!showDetailComicDiv'>
         <div class="modal-body">
             <div class="title-modal">
                 <h3>Related comics</h3>
                 <button (click)="closeModal()" class="btn-base button-close"><img src="assets/img/btn-close.png" alt="Icono cerrar"></button>
             </div>
-            <div class="comics" *ngIf='showComicsDiv'>
+            <div class="comics">
                 <ul>
                     <li *ngFor="let c of comics">
-                        <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" width="100%" class="" alt="Some Issue Loading Image..." />
-                        <h5>{{ c.title }}</h5>
+                        <button type="button" (click)="fetchComicsByComidId(c.id)">
+                            <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" class="" alt="Some Issue Loading Image..." />
+                            <h5>{{ c.title }}</h5>
+                        </button>
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+    <div class="modal" *ngIf='showDetailComicDiv'>
+        <div class="modal-body">
+            <div class="title-modal-single-comic">
+                <button (click)="closeModal()" class="btn-base button-close"><img src="assets/img/btn-close.png" alt="Icono cerrar"></button>
+            </div>
+            <div class="comics single-comic" *ngIf='showDetailComicDiv'>
+                <ul>
+                    <li *ngFor="let c of comics">
+                        <img src="{{c.thumbnail.path +'/standard_medium.'+c.thumbnail.extension}}" class="" alt="Some Issue Loading Image..." />
+                        <div class="content-comic">
+                            <h5>{{ c.title }}</h5>
+                            <p>{{c.description}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-card">
+            <button class="btn-base button-add"><img src="assets/img/btn-favourites-default.png" alt="Icono cerrar">Add to favorites</button>
+            <button class="btn-base button-buy"><img src="assets/img/shopping-cart-primary.png" alt="Icono cerrar">Buy for $3.99</button>
         </div>
     </div>
 </div>

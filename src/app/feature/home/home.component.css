@@ -22,6 +22,7 @@
 
 .card-cont h3{
     font-size: 16px;
+    text-transform: uppercase;
 }
 
 .card-cont p{
@@ -43,6 +44,15 @@
     margin: 0 0 20px 0;
 }
 
+.title-favorites{
+    display: flex;
+    align-items: center;
+}
+
+.title-favorites img{
+    margin: 0 10px 0 0;
+}
+
 .comics ul{
     display: flex;
     list-style: none;
@@ -55,8 +65,49 @@
 }
 
 .comics ul li img{
-    width: 100%;
+    width: 100px;
 }
+
+.comics ul li button{
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: all ease-in-out 0.5s;
+}
+
+.comics ul li button:hover{
+    background: #f3f3f3;
+}
+
+.single-comic ul li{
+    display: flex;
+    align-items: flex-start;
+}
+
+.single-comic ul li h5{
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.single-comic ul li p{
+    font-size: 14px;
+}
+
+.single-comic ul li img{
+    width: 300px;
+}
+
+.single-comic ul li{
+    width: 100%;
+    margin: 0 10px;
+}
+
+.single-comic .content-comic{
+    margin: 0 0 0 20px;
+}
+
 
 .input-sort{
     background: #fff;
@@ -97,6 +148,11 @@
     justify-content: space-between;
 }
 
+.title-modal-single-comic{
+    display: flex;
+    justify-content: flex-end;
+}
+
 header{
     display: flex;
     align-items: center;
@@ -124,4 +180,8 @@ header{
 .search-box span img{
     right: 45px;
     position: relative;
+}
+
+.footer-card{
+    display: flex;
 }

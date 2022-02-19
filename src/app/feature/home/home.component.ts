@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   allCharacters:any=[];
   comics:any=[];
   series:any=[];
+  showDetailComicDiv:boolean;
   showComicsDiv:boolean;
   showSeriesDiv:boolean;
   showDescrip:boolean;
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
   modalSwitch:boolean;
 
   ngOnInit(): void {
+    this.showDetailComicDiv = false;
     this.showComicsDiv = false;
     this.showSeriesDiv = false;
     this.showDescrip = false;
@@ -31,18 +33,6 @@ export class HomeComponent implements OnInit {
     this.service.allCharacters().subscribe((result)=>{
       console.log(result);
       this.allCharacters = result.data.results;
-      // this.allCharacters.forEach(element => {
-      //   if(element.description == ""){
-      //     console.log("Estoy vacio")
-      //     this.showDescrip = true;
-      //     console.log(this.showDescrip);
-      //   }else{
-      //     this.showDescrip = false;
-      //     console.log(this.showDescrip);
-      //     console.log(element.description);
-      //   }
-
-      // });
     });
 
     this.modalSS.$modal.subscribe((valor)=>{this.modalSwitch=valor});
@@ -53,6 +43,7 @@ export class HomeComponent implements OnInit {
   }
   closeModal(){
     this.modalSS.$modal.emit(false);
+    this.showDetailComicDiv = false;
   }
 
   fetchComicsByCharacter(characterId:string)
@@ -87,4 +78,17 @@ export class HomeComponent implements OnInit {
      })
   }
 
+  fetchComicsByComidId(comicId:string)
+  {
+    console.log(comicId);
+    this.service.getComicById(comicId).subscribe((result)=>{
+      console.log(result);
+
+      if(result.data.count>0)
+      {
+        this.comics = result.data.results;
+        this.showDetailComicDiv = true;
+      }
+    })
+  }
 }
